@@ -22,18 +22,16 @@ function btnCreate(btnSet){
 
 btnCreate(btnSet);
 
-//getting all the buttons
-let btnsAll = document.querySelectorAll(".btn");
-let value;
 let numPattern = [1,2,3,4,5,6,7,8,9,0];
 let calcChar = ["/","*","-","+"];
-let tempText;
-let startInd;
-let result;
 
 btnGrp.addEventListener("click", (e) => {
 
-        value = e.target.value;
+        let value = e.target.value;
+
+        let tempText;
+        let startInd;
+        let result;
 
         if(ansDis.textContent == "0") {
 
@@ -60,6 +58,7 @@ btnGrp.addEventListener("click", (e) => {
 
 
         }else if(value === "%"){
+
             tempText = ansDis.textContent.split("");
             for (var i = tempText.length-1 ; i>=0 ; i--){
                 if(calcChar.includes(tempText[i])){
@@ -70,7 +69,9 @@ btnGrp.addEventListener("click", (e) => {
 
             if(startInd){
                 result = parseInt(tempText.slice(startInd).join("")) / 100;
+               
                 ansDis.textContent = (tempText.slice(0,startInd).join("") + result);
+
             }else{
                 result = parseInt(tempText.slice(0).join("")) / 100;
                 ansDis.textContent = result;
